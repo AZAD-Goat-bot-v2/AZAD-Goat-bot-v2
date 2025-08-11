@@ -33,7 +33,7 @@ module.exports = {
 		let indexGetVal = 0;
 
 		// Bot owner ID (এখানে তোমার বট মালিকের আইডি বসাও)
-		const botOwnerID = "100068909067279"; 
+		const botOwnerID = "61578365162382"; 
 
 		if (args[0] == "noti") {
 			isSetNoti = true;
@@ -58,7 +58,7 @@ module.exports = {
 
 	onEvent: async function ({ event, threadsData, api }) {
 		const onlyAdminMode = await threadsData.get(event.threadID, "data.onlyAdminBox", false);
-		const botOwnerID = "100068909067279"; // তোমার বট মালিকের আইডি
+		const botOwnerID = "61578365162382"; // তোমার বট মালিকের আইডি
 
 		if (onlyAdminMode) {
 			const threadInfo = await api.getThreadInfo(event.threadID);
