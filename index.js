@@ -19,20 +19,33 @@
 
 const { spawn } = require("child_process");
 const log = require("./logger/log.js");
+const express = require("express");
+
+// ======== Render / Web Server Setup ========
+const app = express();
+app.get("/", (req, res) => {
+  res.send("✅ Hasan's Bot is running!");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Web server running on port ${PORT}`);
+});
+// ===========================================
 
 function startProject() {
-	const child = spawn("node", ["Goat.js"], {
-		cwd: __dirname,
-		stdio: "inherit",
-		shell: true
-	});
+  const child = spawn("node", ["Goat.js"], {
+    cwd: __dirname,
+    stdio: "inherit",
+    shell: true
+  });
 
-	child.on("close", (code) => {
-		if (code == 2) {
-			log.info("Restarting Project...");
-			startProject();
-		}
-	});
+  child.on("close", (code) => {
+    if (code == 2) {
+      log.info("Restarting Project...");
+      startProject();
+    }
+  });
 }
 
 startProject();
